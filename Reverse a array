@@ -1,0 +1,26 @@
+#include <vector>
+using namespace std;
+
+class Solution {
+  public:
+    // Function to reverse the elements of an array in place
+    void reverseArray(vector<int>& arr) {
+        // Get the size of the array
+        int s = arr.size();
+
+        // Temporary vector to store the reversed elements
+        vector<int> temp(s);
+
+        // Fill the temporary vector with elements in reverse order
+        for (int i = 0; i < s; i++) {
+            // Copy element from the end of 'arr' to the beginning of 'temp'
+            temp[i] = arr[s - i - 1];
+        }
+
+        // Copy elements from the temporary vector back to the original array
+        for (int i = 0; i < s; i++) {
+            // Overwrite elements in 'arr' with reversed elements from 'temp'
+            arr[i] = temp[i];
+        }
+    }
+};
