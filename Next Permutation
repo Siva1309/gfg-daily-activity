@@ -1,0 +1,30 @@
+#include <vector>
+#include <algorithm> // For std::reverse
+using namespace std;
+
+class Solution {
+  public:
+    void nextPermutation(vector<int>& arr) {
+        int n = arr.size();
+        
+        // Step 1: Find the first decreasing element from the right
+        int i = n - 2; // Start from the second-to-last element
+        while (i >= 0 && arr[i] >= arr[i + 1]) {
+            i--; // Move left while arr[i] >= arr[i+1]
+        }
+
+        // If a decreasing element is found
+        if (i >= 0) {
+            // Step 2: Find the smallest element larger than arr[i] to the right
+            int j = n - 1; // Start from the last element
+            while (arr[j] <= arr[i]) {
+                j--; // Move left until arr[j] > arr[i]
+            }
+            // Swap arr[i] with arr[j]
+            swap(arr[i], arr[j]);
+        }
+
+        // Step 3: Reverse the part of the array to the right of i
+        reverse(arr.begin() + i + 1, arr.end()); // Ensure the smallest lexicographical order
+    }
+};
