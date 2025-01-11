@@ -1,0 +1,26 @@
+class Solution {
+  public:
+    vector<int> lcmAndGcd(int a, int b) {
+        // code here
+        std::vector<int> res;
+        int gcd=0,j;
+        
+        
+       
+        for(j = std::min(a,b);j>0;j--)
+        {
+            if(a%j==0 && b%j==0) {
+                gcd=j;  
+                break;
+            }
+        }
+        int lcm = (a*b)/gcd;
+        
+        res.push_back(lcm);
+        res.push_back(gcd);
+        
+        //res.append(gcd);
+        return res;
+        
+    }
+};
