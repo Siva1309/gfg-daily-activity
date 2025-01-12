@@ -1,0 +1,16 @@
+class Solution {
+    static boolean armstrongNumber(int n) {
+        // code here
+        int k = String.valueOf(n).length();
+        int sum = 0,ld;
+        int temp = n;
+        
+        while(n!=0)
+        {
+            ld=n%10;
+            sum+=Math.pow(ld,k);
+            n/=10;
+        }
+        return sum==temp;
+    }
+}
